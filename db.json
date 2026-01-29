@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "juan",
       "password": "1234",
       "role": "user"
@@ -11,18 +11,37 @@
       "username": "Juan",
       "password": "1234",
       "role": "admin"
+    },
+    {
+      "id": "4b68",
+      "username": "Thomas",
+      "password": "4444",
+      "role": "user"
     }
   ],
   "products": [
     {
-      "id": 1,
-      "name": "Burger",
-      "price": 12000
+      "id": "9f6f",
+      "name": "Hamburguesa",
+      "price": 15000,
+      "image": "https://images.unsplash.com/photo-1550547660-d9450f859349"
+    },
+    {
+      "id": "2b9a",
+      "name": "papas",
+      "price": 6000,
+      "image": "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5"
+    },
+    {
+      "id": "7617",
+      "name": "Perro",
+      "price": 12000,
+      "image": "https://images.unsplash.com/photo-1617196034183-421b4917c92d?auto=format&fit=crop&w=600&q=80"
     }
   ],
   "orders": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "items": [
         {
@@ -33,6 +52,14 @@
       "status": "pending",
       "total": 24000,
       "date": "2026-01-28"
+    },
+    {
+      "id": "5887",
+      "userId": null,
+      "productId": "9f6f",
+      "productName": "Hamburguesa",
+      "price": 15000,
+      "date": "29/1/2026"
     }
   ]
 }
