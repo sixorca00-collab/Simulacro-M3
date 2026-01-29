@@ -1,41 +1,30 @@
-//Traemos lo de los datos ingresados por el usuario 
-import {RuserName, RuserPass, RuserRol, BtnReg} from './elements.js'; 
+export function registerUser() {
+  const btn = document.getElementById("btnRegister");
 
-//Array donde iran los usuarios de momento mientras aprendo jsonserver 
-export const users = []; 
+  btn.addEventListener("click", async () => {
+    const username = document.getElementById("rUser").value;
+    const password = document.getElementById("rPass").value;
+    const role = document.getElementById("rRole").value;
 
-//Le damos el evento que capture y envie todo. 
-export function Register() {
-    BtnReg.addEventListener('click', (e) => {
-        e.preventDefault();
+    if (!username || !password) {
+      alert("Fill all fields");
+      return;
+    }
 
-        //Capturamos los valores actuales del usuario
-        let UserName = RuserName.value;
-        let UserPass = RuserPass.value;
-        const rol = RuserRol.value; //Rol dentro para que sea captado por el scope
+    const res = await fetch(`http://localhost:3000/users?username=${username}`);
+    const data = await res.json();
 
-        //Validamos que no esten vacios.
-        if(UserName.trim() === "" || UserPass.trim() === ""){
-            alert("Complete all datas please.");
-        } else {
-            alert("testeo de validaciones completado");
-            intArray(UserName, UserPass, rol);
-        }
+    if (data.length > 0) {
+      alert("User already exists");
+      return;
+    }
+
+    await fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password, role })
     });
-}
 
-//Creamos la funcion para ingresar el usuario al array
-export function intArray(name, pass, role){
-    users.push({
-        "name": name,
-        "password": pass,
-        "role": role
-    });
-    console.log(users);
-    LS(users);
+    alert("User registered");
+  });
 }
-//Lo metemos dentro del localStorage para poder inicializarlo una vez creado
-function LS(users){
-    localStorage.setItem("users", JSON.stringify(users));
-    console.log("Se subio adecuadamente a LS")
-};

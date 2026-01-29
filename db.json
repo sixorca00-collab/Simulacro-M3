@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "juan",
+      "password": "1234",
+      "role": "user"
+    },
+    {
+      "id": "754d",
+      "username": "Juan",
+      "password": "1234",
+      "role": "admin"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Burger",
+      "price": 12000
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "userId": 1,
+      "items": [
+        {
+          "productId": 1,
+          "qty": 2
+        }
+      ],
+      "status": "pending",
+      "total": 24000,
+      "date": "2026-01-28"
+    }
+  ]
+}
